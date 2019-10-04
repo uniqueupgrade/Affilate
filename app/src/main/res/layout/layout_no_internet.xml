@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="center">
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/textView3"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="@dimen/dp20"
+                android:layout_marginTop="@dimen/dp50"
+                android:layout_marginEnd="@dimen/dp20"
+                android:gravity="center"
+                android:text="@string/no_internet_message"
+                android:textColor="@color/interrupt"
+                android:textSize="@dimen/sp15"
+                android:typeface="sans" />
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/frameNoInternet"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dp20"
+                android:gravity="center"
+                android:text="@string/opps"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/sp28"
+                android:textStyle="bold"
+                android:typeface="sans" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/textView2"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="@dimen/dp50"
+                android:gravity="center"
+                android:text="@string/connection_failure"
+                android:textColor="@color/interrupt"
+                android:textSize="@dimen/sp26"
+                android:typeface="sans" />
+
+            <FrameLayout
+                android:id="@+id/frameNoInternet"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true">
+
+                <ImageView
+                    android:id="@+id/imgNoInternet"
+                    android:layout_width="@dimen/dp150"
+                    android:layout_height="@dimen/dp150" />
+
+            </FrameLayout>
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnTryAgain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/button_ripple_effect_drawable"
+        android:text="@string/try_again"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/sp18"
+        android:typeface="sans" />
+
+</RelativeLayout>

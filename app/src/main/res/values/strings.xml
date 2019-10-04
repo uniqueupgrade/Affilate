@@ -1,0 +1,34 @@
+<resources>
+    <string name="app_name">Afflilate</string>
+    <string name="version">Version</string>
+
+    <string name="progress_login">Please wait...</string>
+    <string name="hint_mobile">Mobile Number*</string>
+    <string name="agree_terms">Agree to Terms and Conditions, Privacy Policy</string>
+    <string name="request_otp">Request OTP</string>
+    <string name="resend_otp">Resend OTP</string>
+    <string name="swipe_to_top">Swipe To Top</string>
+    <string name="opps">Oops</string>
+    <string name="connection_failure">Connection Failure</string>
+    <string name="no_internet_message">Slow or no internet connection. Please check your internet settings and try again</string>
+    <string name="try_again">Try Again</string>
+    <string name="terms_and_conditions"><![CDATA[Terms & Conditions, Privacy Policy]]></string>
+    <string name="hint_mobile_number">Mobile Number*</string>
+    <string name="error_mobile_number">Please enter valid mobile number</string>
+    <string name="error_mobile">Please enter 10 digit mobile number</string>
+    <string name="error_terms">Please accept our Terms and Conditions to continue</string>
+    <string name="error_otp">OTP is invalid</string>
+    <string name="hint_ok">Ok</string>
+    <string name="change_number">CHANGE NUMBER</string>
+    <string name="we_will_auto_read_your_otp_when_it_comes_usually_otp_takes_2_minutes">We will auto read your OTP when it comes, Usually OTP takes 2 Minutes.</string>
+    <string name="title_enter_otp">ENTER OTP</string>
+    <string name="mobile_opt_sent_msg">We have  sent a one time verification code to your registered mobile</string>
+    <string name="didn_t_get_the_otp">Didn\'t get the OTP?</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="short_list">Shorrt List</string>
+    <string name="profile">Profile</string>
+    <string name="something_wrong">Something went wrong, please try again</string>
+    <string name="submit_otp">Submit Otp</string>
+    <string name="press_again">Please Press Again to exit</string>
+</resources>

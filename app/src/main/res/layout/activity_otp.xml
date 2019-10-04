@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include
+        android:id="@+id/toolbar_top"
+        layout="@layout/custom_toolbar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar_top"
+        android:orientation="vertical"
+        android:padding="@dimen/dp10">
+
+        <TextView
+            android:id="@+id/tvSentOtpMsg"
+            android:layout_width="@dimen/dp240"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp10"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:lineSpacingMultiplier="1.2"
+            android:textColor="@color/color_gray"
+            android:textSize="@dimen/sp12" />
+
+        <TextView
+            android:id="@+id/tvChangeNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dp40"
+            android:gravity="center"
+            android:text="@string/change_number"
+            android:textColor="@android:color/holo_orange_dark"
+            android:textSize="@dimen/sp12"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvTimer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/dp5"
+            android:textColor="@color/colorPrimaryButton"
+            android:layout_gravity="center"
+            android:textSize="@dimen/sp15"
+            android:typeface="sans" />
+
+        <LinearLayout
+            android:layout_width="@dimen/dp240"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            android:padding="@dimen/dp10">
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp60"
+                android:layout_weight="1"
+                android:clipToPadding="false"
+                android:gravity="bottom">
+
+                <EditText
+                    android:id="@+id/etOTPOne"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/top_nav_bg"
+                    android:drawablePadding="@dimen/dp10"
+                    android:gravity="center"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/sp18"
+                    android:typeface="sans" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp60"
+                android:layout_weight="1"
+                android:clipToPadding="false"
+                android:gravity="bottom">
+
+                <EditText
+                    android:id="@+id/etOTPTwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/top_nav_bg"
+                    android:drawablePadding="@dimen/dp10"
+                    android:gravity="center"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/sp18"
+                    android:typeface="sans" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp60"
+                android:layout_weight="1"
+                android:clipToPadding="false"
+                android:gravity="bottom">
+
+                <EditText
+                    android:id="@+id/etOTPThree"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/top_nav_bg"
+                    android:drawablePadding="@dimen/dp10"
+                    android:gravity="center"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/sp18"
+                    android:typeface="sans" />
+
+            </android.support.design.widget.TextInputLayout>
+
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="0dp"
+                android:layout_height="@dimen/dp60"
+                android:layout_weight="1"
+                android:clipToPadding="false"
+                android:gravity="bottom">
+
+                <EditText
+                    android:id="@+id/etOTPFour"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/top_nav_bg"
+                    android:drawablePadding="@dimen/dp10"
+                    android:gravity="center"
+                    android:imeOptions="actionDone"
+                    android:inputType="number"
+                    android:maxLines="1"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/sp18"
+                    android:typeface="sans" />
+
+            </android.support.design.widget.TextInputLayout>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="@dimen/dp180"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="@dimen/dp10"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.2"
+            android:text="@string/we_will_auto_read_your_otp_when_it_comes_usually_otp_takes_2_minutes"
+            android:textColor="@color/color_gray"
+            android:textSize="@dimen/sp12" />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/btnResendOtp"
+        android:layout_marginBottom="@dimen/dp10"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.2"
+        android:text="@string/didn_t_get_the_otp"
+        android:textColor="@color/color_gray"
+        android:textSize="@dimen/sp12" />
+
+    <Button
+        android:id="@+id/btnResendOtp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/button_ripple_effect_drawable"
+        android:text="@string/resend_otp"
+        android:textAllCaps="false"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/sp18"
+        android:typeface="sans" />
+
+</RelativeLayout>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/dp5">
+
+    <ImageView
+        android:id="@+id/bannerImage"
+        android:layout_width="@dimen/banner_width"
+        android:layout_height="@dimen/banner_height"
+        android:layout_marginEnd="@dimen/dp5"
+        android:scaleType="fitXY" />
+
+    <ImageView
+        android:id="@+id/bannerImageSingle"
+        android:layout_width="@dimen/banner_width"
+        android:layout_height="@dimen/banner_height"
+        android:layout_marginEnd="@dimen/dp5"
+        android:scaleType="fitXY" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="@dimen/dp40"
+        android:layout_height="@dimen/dp40"
+        android:visibility="gone"
+        android:layout_centerInParent="true" />
+
+</RelativeLayout>
