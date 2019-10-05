@@ -15,25 +15,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/dp10"
-        android:layout_marginBottom="@dimen/dp10"
-        android:nestedScrollingEnabled="false" />
+        android:layout_marginBottom="@dimen/dp10"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvProductList"
+    <ListView
+        android:id="@+id/lvProductList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/bottom_layout"
         android:layout_below="@id/rvBannerList"
-        android:paddingStart="@dimen/dp10"
-        android:paddingEnd="@dimen/dp10"
-        android:paddingBottom="@dimen/dp10" />
+        android:divider="@null"/>
 
     <include
         android:id="@+id/bottom_layout"
         layout="@layout/dashboard_bottom_layout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp80"
+        android:layout_height="@dimen/dp50"
         android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom" />
+        android:layout_gravity="bottom"/>
 
 </RelativeLayout>

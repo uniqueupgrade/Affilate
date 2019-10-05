@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="products">
+        <item>Electronics</item>
+        <item>Fashion</item>
+        <item>Home and Furniture</item>
+        <item>Mobiles and Tablets</item>
+        <item>TV and Appliances</item>
+    </string-array>
+</resources>

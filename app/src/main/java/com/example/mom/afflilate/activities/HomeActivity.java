@@ -9,10 +9,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.example.mom.afflilate.R;
 import com.example.mom.afflilate.adaapter.BannerAdapter;
+import com.example.mom.afflilate.adaapter.ProductListAdapter;
 import com.example.mom.afflilate.listeners.TryAgainButtonClickListener;
 import com.example.mom.afflilate.model.BannerListBean;
 import com.example.mom.afflilate.utils.ProgressBarHandler;
@@ -23,9 +25,12 @@ import java.util.ArrayList;
 public class HomeActivity extends BaseActivity {
 
     Context mContext;
-    RecyclerView mRvBannerList, mRvProductList;
+    RecyclerView mRvBannerList;
+    ListView mlvProductList;
     View no_internet;
     boolean mDoubleBackToExitPressedOnce;
+    private int[] mItemIcon = {R.drawable.ic_home_black, R.drawable.ic_home_black, R.drawable.ic_home_black, R.drawable.ic_home_black,
+            R.drawable.ic_home_black};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +56,11 @@ public class HomeActivity extends BaseActivity {
 
     private void initializeViews() {
         mRvBannerList = findViewById(R.id.rvBannerList);
-        mRvProductList = findViewById(R.id.rvProductList);
+        mlvProductList = findViewById(R.id.lvProductList);
         mProgressBarHandler = new ProgressBarHandler(mContext);
         initializeInternetViews();
+        attachBannerView();
+        attachProductListView();
     }
 
 
@@ -67,13 +74,23 @@ public class HomeActivity extends BaseActivity {
         Utilities.loadNoInternetGIFImage(mContext, mImgNoInternet);
     }
 
-    public void attachVideoBannerView() {
+    public void attachBannerView() {
         try {
             ArrayList<BannerListBean.Banner> mShownBannerList = new ArrayList<>();
             //API Call and add the data into banner arraylist
             BannerAdapter bannerAdapter = new BannerAdapter(this, mShownBannerList);
             mRvBannerList.setLayoutManager(new LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false));
             mRvBannerList.setAdapter(bannerAdapter);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void attachProductListView() {
+        try {
+            String[] myProductList = getResources().getStringArray(R.array.products);
+            ProductListAdapter productListAdapter = new ProductListAdapter(this, myProductList, mItemIcon);
+            mlvProductList.setAdapter(productListAdapter);
         } catch (Exception e) {
             e.printStackTrace();
         }
