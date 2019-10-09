@@ -40,6 +40,12 @@ public class HomeActivity extends BaseActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        setSelectedBottomTab(0);
+    }
+
+    @Override
     public int getLayoutResourceId() {
         return R.layout.activity_home;
     }
@@ -62,7 +68,6 @@ public class HomeActivity extends BaseActivity {
         attachBannerView();
         attachProductListView();
     }
-
 
     private void initializeInternetViews() {
         no_internet = findViewById(R.id.no_internet);

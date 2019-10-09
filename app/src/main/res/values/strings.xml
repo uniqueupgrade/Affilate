@@ -27,8 +27,21 @@
     <string name="home">Home</string>
     <string name="search">Search</string>
     <string name="short_list">Shorrt List</string>
-    <string name="profile">Profile</string>
+    <string name="setting">Setting</string>
     <string name="something_wrong">Something went wrong, please try again</string>
     <string name="submit_otp">Submit Otp</string>
     <string name="press_again">Please Press Again to exit</string>
+    <string name="title_search">Search...</string>
+    <string name="edit">Edit</string>
+    <string name="logout">Logout</string>
+    <string name="my_profile">My Profile</string>
+    <string name="faq">FAQ</string>
+    <string name="blogs">Blogs</string>
+    <string name="share_with_friends">Share App</string>
+    <string name="how_it_works">How It Works</string>
+    <string name="services">Services</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="logout_confirmation_message">Are you sure you want to logout?</string>
+    <string name="hint_yes">Yes</string>
+    <string name="hint_no">No</string>
 </resources>

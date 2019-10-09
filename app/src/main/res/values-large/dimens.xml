@@ -28,4 +28,9 @@
     <dimen name="dp80">120dp</dimen>
     <dimen name="banner_width">600dp</dimen>
     <dimen name="banner_height">140dp</dimen>
+    <dimen name="dp140">200dp</dimen>
+    <dimen name="dp100">150dp</dimen>
+    <dimen name="dp1">2dp</dimen>
+    <dimen name="dp25">37.5dp</dimen>
+    <dimen name="dp24">32dp</dimen>
 </resources>

@@ -11,4 +11,6 @@
     <color name="color_gray_ripple">#F8F8F8</color>
     <color name="interrupt">#c22020</color>
     <color name="color_gray">#A2A2A2</color>
+    <color name="bg_color_lightgreen">#e9f2ef</color>
+    <color name="disable_tab_color">#DDDDDD</color>
 </resources>

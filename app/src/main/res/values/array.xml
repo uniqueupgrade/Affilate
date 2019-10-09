@@ -7,4 +7,15 @@
         <item>Mobiles and Tablets</item>
         <item>TV and Appliances</item>
     </string-array>
+
+    <string-array name="nav_item_activity_titles">
+        <item>@string/my_profile</item>
+        <item>@string/faq</item>
+        <item>@string/share_with_friends</item>
+        <item>@string/services</item>
+        <item>@string/how_it_works</item>
+        <item>@string/terms_and_conditions</item>
+        <item>@string/contact_us</item>
+        <item>@string/logout</item>
+    </string-array>
 </resources>

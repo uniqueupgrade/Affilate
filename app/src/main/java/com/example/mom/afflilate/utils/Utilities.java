@@ -3,8 +3,13 @@ package com.example.mom.afflilate.utils;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.NotificationManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.pm.LabeledIntent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
 import android.net.ConnectivityManager;
 import android.net.Uri;
 import android.view.View;
@@ -22,8 +27,10 @@ import com.example.mom.afflilate.R;
 import java.text.DateFormat;
 import java.text.MessageFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
@@ -122,8 +129,7 @@ public class Utilities {
         }
     }
 
-    public static void BannerWithExcImageView(Context mContext, String url,
-                                              int placeholder, ImageView mIvProfileView, final ProgressBar progressBar) {
+    public static void BannerWithExcImageView(Context mContext, String url, int placeholder, ImageView mIvProfileView, final ProgressBar progressBar) {
         if (!isEmptyString(url)) {
             Glide
                     .with(mContext)
@@ -161,4 +167,47 @@ public class Utilities {
             return true;
         }
     }
+
+    public static void openShareDialog(Context context, String guid, String dialogtitle, String blogTitle) {
+        String strShareText = "";
+        /*if (dialogtitle.equalsIgnoreCase(context.getResources().getString(R.string.share_blog))) {
+            strShareText = context.getResources().getString(R.string.share_blog_text1) + " \"" + blogTitle + "\" " + context.getResources().getString(R.string.share_blog_text2) + guid;
+        } else if (dialogtitle.equalsIgnoreCase(context.getResources().getString(R.string.share_video))) {
+            strShareText = context.getResources().getString(R.string.share_video_text) + guid;
+        } else {
+            strShareText = context.getResources().getString(R.string.share_text) + guid;
+        }*/
+
+        PackageManager pm = context.getPackageManager();
+        Intent sendIntent = new Intent(Intent.ACTION_SEND);
+        sendIntent.setType("text/plain");
+
+        Intent openInChooser = Intent.createChooser(sendIntent, dialogtitle);
+
+        List<ResolveInfo> resInfo = pm.queryIntentActivities(sendIntent, 0);
+        List<LabeledIntent> intentList = new ArrayList<>();
+        for (int i = 0; i < resInfo.size(); i++) {
+            // Extract the label, append it, and repackage it in a LabeledIntent
+            ResolveInfo ri = resInfo.get(i);
+            String packageName = ri.activityInfo.packageName;
+            if (packageName.contains("com.google.android.apps.docs")) {
+                Intent intent = new Intent();
+                intent.setComponent(new ComponentName(packageName, ri.activityInfo.name));
+                intent.setAction(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT, guid);
+                intentList.add(new LabeledIntent(intent, packageName, ri.loadLabel(pm), ri.icon));
+            } else {
+                sendIntent.putExtra(Intent.EXTRA_TEXT, strShareText);
+                intentList.add(new LabeledIntent(sendIntent, packageName, ri.loadLabel(pm), ri.icon));
+            }
+        }
+
+        // convert intentList to array
+        LabeledIntent[] extraIntents = intentList.toArray(new LabeledIntent[intentList.size()]);
+
+        openInChooser.putExtra(Intent.EXTRA_INITIAL_INTENTS, extraIntents);
+        context.startActivity(openInChooser);
+    }
+
 }

@@ -6,6 +6,13 @@ import java.util.Locale;
 public class Constants {
 
     public static final String URL_API = "http://uniqueupgrade.in/apitest/get/api/";
+    //Urls
+    public static String WEBSITE = "http://uniqueupgrade.in/apitest/get/api/";
+    public static String LINK_TERMS_AND_CONDITIONS = Constants.WEBSITE + "termsandconditionsm";
+    public static String LINK_FAQ = Constants.WEBSITE + "faqm";
+    public static String LINK_SERVICE = Constants.WEBSITE + "servicesm";
+    public static String LINK_HOW_IT_WORKS = Constants.WEBSITE + "howitworksm";
+    public static String LINK_CONTACT_US = Constants.WEBSITE + "contactusm";
     public static final int DRAWABLE_LEFT = 1;
     public static final int DRAWABLE_RIGHT = 2;
     public static final int DRAWABLE_TOP = 3;
@@ -53,12 +60,9 @@ public class Constants {
     public static String mFormatTime = "HH:mm:ss";
     public static SimpleDateFormat simpleFormatTimefAPI = new SimpleDateFormat(mFormatTime, Locale.US);
 
-    //Urls
-    public static String WEBSITE = "";
-    public static String LINK_TERMS_AND_CONDITIONS = WEBSITE + "termsandconditionsm";
-
     //Keys
     public static String KEY_IS_LOGGED_IN = "isLoggedIn";
+    public static String KEY_IS_LOGGED_OUT = "isLoggedOut";
     public static String INTENT_KEY_COMEFROM = "comeFrom";
     public static String INTENT_KEY_URL = "url";
     public static String INTENT_KEY_TITLENAME = "titlename";
