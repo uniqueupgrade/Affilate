@@ -128,10 +128,8 @@ public class LoginActivity extends Activity implements View.OnClickListener, Log
 
     private void performRequiredAction() {
         if (Utilities.isNetworkAvailable(mContext)) {
-            startActivity(new Intent(LoginActivity.this, OtpActivity.class));
-            finish();
-//            SessionManager.setString(Constants.KEY_MOBILE_NO, mEtMobileNo.getText().toString());
-//            mLoginActivityPresenter.getSendOtp(mEtMobileNo.getText().toString().trim());
+            SessionManager.setString(Constants.KEY_MOBILE_NO, mEtMobileNo.getText().toString());
+            mLoginActivityPresenter.getSendOtp(mEtMobileNo.getText().toString().trim());
         } else {
             Utilities.showAlertDialog(mContext, getString(R.string.hint_ok), "", getString(R.string.no_internet_message));
         }
@@ -139,8 +137,9 @@ public class LoginActivity extends Activity implements View.OnClickListener, Log
 
     @Override
     public void getSendOtp(LoginBean loginBean) {
-        if (loginBean.getStatus().equalsIgnoreCase(Constants.KEY_SUCCESS)) {
+        if (loginBean.getMessage().equalsIgnoreCase(Constants.KEY_SUCCESS)) {
             if (loginBean.getData() != null && loginBean.getData().toString().length() > 0) {
+                SessionManager.setString(Constants.KEY_OTP, loginBean.getData().getOtp());
                 startActivity(new Intent(LoginActivity.this, OtpActivity.class));
                 finish();
             }
@@ -148,7 +147,7 @@ public class LoginActivity extends Activity implements View.OnClickListener, Log
     }
 
     @Override
-    public void getVerificationOtp(CommonDataBean commonDataBean) {
+    public void postVerificationOtp(CommonDataBean commonDataBean) {
 
     }
 }

@@ -51,7 +51,7 @@ public class SplashActivity extends AppCompatActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    if (!SessionManager.getBoolean(Constants.KEY_IS_LOGGED_IN)) {
+                    if (SessionManager.getBoolean(Constants.KEY_IS_LOGGED_IN)) {
                         Navigation.navigateToDashboard(mContext);
                         finishAffinity();
                     } else {

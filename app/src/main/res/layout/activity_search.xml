@@ -1,19 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_color_lightgreen">
 
-    <include
-        android:id="@+id/toolbar_top"
-        layout="@layout/custom_toolbar" />
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarBottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/dp10"
+                android:layout_marginStart="@dimen/dp25">
+
+                <android.support.v7.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    android:background="?attr/colorPrimary"
+                    app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="-20dp"
+                    android:gravity="center"
+                    android:text="@string/search"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/sp18"
+                    android:typeface="sans" />
+            </FrameLayout>
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|start"
+                android:background="@drawable/back_button_ripple_effect_drawable"
+                android:paddingStart="@dimen/dp15"
+                android:paddingTop="@dimen/dp10"
+                android:paddingEnd="@dimen/dp13"
+                android:paddingBottom="@dimen/dp8"/>
+        </FrameLayout>
+    </android.support.design.widget.AppBarLayout>
 
     <ListView
         android:id="@+id/lstSearchItem"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@+id/toolbar_top"
+        android:layout_below="@+id/appBarBottom"
         android:layout_above="@id/bottom_layout"
         android:layout_centerHorizontal="true" />
 

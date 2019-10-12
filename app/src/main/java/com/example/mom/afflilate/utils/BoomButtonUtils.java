@@ -59,7 +59,7 @@ public class BoomButtonUtils {
                         break;
                     case 1:
                         if (selectedPosition != 1) {
-                            if (!SessionManager.getBoolean(Constants.KEY_IS_LOGGED_IN)) {
+                            if (SessionManager.getBoolean(Constants.KEY_IS_LOGGED_IN)) {
                                 mContext.startActivity(new Intent(mContext, SearchActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                                 ((Activity) mContext).overridePendingTransition(0, 0);((Activity) mContext).overridePendingTransition(0, 0);
                                 if (!mContext.getClass().getSimpleName().equalsIgnoreCase(HomeActivity.class.getSimpleName())) {
@@ -72,7 +72,7 @@ public class BoomButtonUtils {
                         break;
                     case 2:
                         if (selectedPosition != 2) {
-                            if (!SessionManager.getBoolean(Constants.KEY_IS_LOGGED_IN)) {
+                            if (SessionManager.getBoolean(Constants.KEY_IS_LOGGED_IN)) {
                                 mContext.startActivity(new Intent(mContext, ShortListActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                                 ((Activity) mContext).overridePendingTransition(0, 0);
                                 if (!mContext.getClass().getSimpleName().equalsIgnoreCase(HomeActivity.class.getSimpleName())) {
@@ -85,7 +85,7 @@ public class BoomButtonUtils {
                         break;
                     case 3:
                         if (selectedPosition != 3) {
-                            if (!SessionManager.getBoolean(Constants.KEY_IS_LOGGED_IN)) {
+                            if (SessionManager.getBoolean(Constants.KEY_IS_LOGGED_IN)) {
                                 mContext.startActivity(new Intent(mContext, SettingActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                                 ((Activity) mContext).overridePendingTransition(0, 0);
                                 if (!mContext.getClass().getSimpleName().equalsIgnoreCase(HomeActivity.class.getSimpleName())) {

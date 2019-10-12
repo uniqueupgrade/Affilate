@@ -1,11 +1,13 @@
 package com.example.mom.afflilate.presenter;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.example.mom.afflilate.R;
+import com.example.mom.afflilate.interfaces.CommonAPIs;
 import com.example.mom.afflilate.model.CommonDataBean;
 import com.example.mom.afflilate.model.LoginBean;
-import com.example.mom.afflilate.services.CommonAPIServices;
+import com.example.mom.afflilate.services.APIClientRetrofit;
 import com.example.mom.afflilate.utils.Constants;
 import com.example.mom.afflilate.utils.ProgressBarHandler;
 import com.example.mom.afflilate.utils.Utilities;
@@ -17,9 +19,11 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import static com.example.mom.afflilate.AppController.TAG;
+
 public class LoginActivityPresenter {
     private LoginActivityViews mLoginActivityViews;
-    private CommonAPIServices mCommonAPIServices;
+    private CommonAPIs mCommonAPI;
     private Context mContext;
     private ProgressBarHandler mProgressBarHandler;
 
@@ -28,14 +32,12 @@ public class LoginActivityPresenter {
         this.mContext = context;
         this.mProgressBarHandler = progressBarHandler;
 
-        if (mCommonAPIServices == null) {
-            mCommonAPIServices = new CommonAPIServices();
-        }
+        mCommonAPI = APIClientRetrofit.getClient().create(CommonAPIs.class);
     }
 
     public void getSendOtp(String mobile) {
         mProgressBarHandler.showProgress(mContext.getResources().getString(R.string.progress_login));
-        Call<LoginBean> call = mCommonAPIServices.getCommonAPIAuthorization().getSendOTP(Constants.API_SEND_OTP + mobile);
+        Call<LoginBean> call = mCommonAPI.getSendOTP(Constants.API_SEND_OTP + mobile);
         call.enqueue(new Callback<LoginBean>() {
             @Override
             public void onResponse(Call<LoginBean> call, Response<LoginBean> response) {
@@ -66,9 +68,9 @@ public class LoginActivityPresenter {
         });
     }
 
-    public void getVerification(String mobile, String otp) {
+    public void postVerificationOtp(String mobileNumber, String otp) {
         mProgressBarHandler.showProgress(mContext.getResources().getString(R.string.progress_login));
-        Call<CommonDataBean> call = mCommonAPIServices.getCommonAPIAuthorization().getOTPVerification(Constants.API_VERIFICATION_OTP);
+        Call<CommonDataBean> call = mCommonAPI.postOTPVerification(Constants.API_VERIFICATION_OTP, mobileNumber, otp);
         call.enqueue(new Callback<CommonDataBean>() {
             @Override
             public void onResponse(Call<CommonDataBean> call, Response<CommonDataBean> response) {
@@ -83,7 +85,7 @@ public class LoginActivityPresenter {
                                 jsonObject.optString(Constants.KEY_MESSAGE));
                     } else {
                         if (response.body() != null)
-                            mLoginActivityViews.getVerificationOtp(response.body());
+                            mLoginActivityViews.postVerificationOtp(response.body());
                     }
                 } catch (Exception e) {
                     e.printStackTrace();

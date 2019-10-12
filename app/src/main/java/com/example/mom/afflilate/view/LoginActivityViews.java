@@ -6,5 +6,5 @@ import com.example.mom.afflilate.model.LoginBean;
 public interface LoginActivityViews {
     void getSendOtp(LoginBean loginBean);
 
-    void getVerificationOtp(CommonDataBean commonDataBean);
+    void postVerificationOtp(CommonDataBean commonDataBean);
 }

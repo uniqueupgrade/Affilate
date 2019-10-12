@@ -12,12 +12,9 @@ public class CommonDataBean {
     @SerializedName("data")
     @Expose
     private List<Object> data = null;
-    @SerializedName("message")
+    @SerializedName("status_message")
     @Expose
     private String message;
-    @SerializedName("code")
-    @Expose
-    private Integer code;
 
     public String getStatus() {
         return status;
@@ -41,13 +38,5 @@ public class CommonDataBean {
 
     public void setMessage(String message) {
         this.message = message;
-    }
-
-    public Integer getCode() {
-        return code;
-    }
-
-    public void setCode(Integer code) {
-        this.code = code;
     }
 }

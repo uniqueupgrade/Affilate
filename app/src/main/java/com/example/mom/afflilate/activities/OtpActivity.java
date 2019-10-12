@@ -40,13 +40,36 @@ import java.util.concurrent.TimeUnit;
 public class OtpActivity extends AppCompatActivity implements View.OnClickListener, LoginActivityViews {
 
     private Context mContext;
-    private TextView mTvSentOtpMsg, mTvChangeNumber, mTvTimer;
+    private TextView mTvSentOtpMsg, mTvChangeNumber, mTvTimer, mTvDidNotGetOtp;
     private EditText mEtOTPOne, mEtOTPTwo, mEtOTPThree, mEtOTPFour;
     private Button mBtnResendOtp;
 
     private CountDownTimer countTimer;
     private LoginActivityPresenter mLoginActivityPresenter;
     private ProgressBarHandler mProgressBarHandler;
+    private boolean isResend = false;
+
+    public static String maskCardNumber(String cardNumber, String mask) {
+
+        // format the number
+        int index = 0;
+        StringBuilder maskedNumber = new StringBuilder();
+        for (int i = 0; i < mask.length(); i++) {
+            char c = mask.charAt(i);
+            if (c == 'x') {
+                maskedNumber.append(cardNumber.charAt(index));
+                index++;
+            } else if (c == '*') {
+                maskedNumber.append(c);
+                index++;
+            } else {
+                maskedNumber.append(c);
+            }
+        }
+
+        // return the masked number
+        return maskedNumber.toString();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +79,7 @@ public class OtpActivity extends AppCompatActivity implements View.OnClickListen
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_otp);
         mContext = this;
+        startSMSRetrieval();
         setupToolbar();
         initializePresenters();
         initializeViews();
@@ -95,12 +119,20 @@ public class OtpActivity extends AppCompatActivity implements View.OnClickListen
         mTvSentOtpMsg = findViewById(R.id.tvSentOtpMsg);
         mTvChangeNumber = findViewById(R.id.tvChangeNumber);
         mTvTimer = findViewById(R.id.tvTimer);
+        mTvDidNotGetOtp = findViewById(R.id.tvDidNotGetOtp);
         mEtOTPOne = findViewById(R.id.etOTPOne);
         mEtOTPTwo = findViewById(R.id.etOTPTwo);
         mEtOTPThree = findViewById(R.id.etOTPThree);
         mEtOTPFour = findViewById(R.id.etOTPFour);
         mBtnResendOtp = findViewById(R.id.btnResendOtp);
+        mTvChangeNumber.setOnClickListener(this);
         mBtnResendOtp.setOnClickListener(this);
+        SmsReceiver.bindListener(new SmsListener() {
+            @Override
+            public void messageReceived(String messageText) {
+                mEtOTPOne.setText(messageText);
+            }
+        });
         mEtOTPOne.addTextChangedListener(new TextWatcher() {
             public void afterTextChanged(Editable s) {
                 if (s.length() == 1) {
@@ -119,6 +151,10 @@ public class OtpActivity extends AppCompatActivity implements View.OnClickListen
             public void afterTextChanged(Editable s) {
                 if (s.length() == 1) {
                     mEtOTPThree.requestFocus();
+                } else {
+                    mEtOTPOne.setFocusableInTouchMode(true);
+                    mEtOTPOne.setFocusable(true);
+                    mEtOTPOne.requestFocus();
                 }
             }
 
@@ -133,6 +169,10 @@ public class OtpActivity extends AppCompatActivity implements View.OnClickListen
             public void afterTextChanged(Editable s) {
                 if (s.length() == 1) {
                     mEtOTPFour.requestFocus();
+                } else {
+                    mEtOTPTwo.setFocusableInTouchMode(true);
+                    mEtOTPTwo.setFocusable(true);
+                    mEtOTPTwo.requestFocus();
                 }
             }
 
@@ -147,6 +187,10 @@ public class OtpActivity extends AppCompatActivity implements View.OnClickListen
             public void afterTextChanged(Editable s) {
                 if (s.length() == 1) {
                     Utilities.hideKeyboard(OtpActivity.this);
+                } else {
+                    mEtOTPThree.setFocusableInTouchMode(true);
+                    mEtOTPThree.setFocusable(true);
+                    mEtOTPThree.requestFocus();
                 }
             }
 
@@ -166,7 +210,7 @@ public class OtpActivity extends AppCompatActivity implements View.OnClickListen
             }
         });
 
-        mTvSentOtpMsg.setText(getString(R.string.mobile_opt_sent_msg) + " " + "96******96");
+        mTvSentOtpMsg.setText(getString(R.string.mobile_opt_sent_msg) + " " + maskCardNumber(SessionManager.getString(Constants.KEY_MOBILE_NO), "xx******xx"));
         displayTimer();
     }
 
@@ -178,24 +222,43 @@ public class OtpActivity extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
-            case R.id.btnResendOtp:
-                checkValidation();
+            case R.id.tvChangeNumber:
+                startActivity(new Intent(OtpActivity.this, LoginActivity.class));
+                finish();
                 break;
+            case R.id.btnResendOtp:
+                if (!isResend) {
+                    checkValidation();
+                }else {
+                    performRequiredActionResend();
+                }
+                break;
+        }
+    }
+
+    private void performRequiredActionResend() {
+        if (Utilities.isNetworkAvailable(mContext)) {
+            mLoginActivityPresenter.getSendOtp(SessionManager.getString(Constants.KEY_MOBILE_NO));
+        } else {
+            Utilities.showAlertDialog(mContext, getString(R.string.hint_ok), "", getString(R.string.no_internet_message));
         }
     }
 
     private void checkValidation() {
         if (mEtOTPOne.getText().toString().trim().isEmpty() || mEtOTPTwo.getText().toString().trim().isEmpty() ||
                 mEtOTPThree.getText().toString().trim().isEmpty() || mEtOTPFour.getText().toString().trim().isEmpty()) {
+            Utilities.showAlertDialog(mContext, getString(R.string.hint_ok), "", getString(R.string.error_please_enter_the_otp));
+        } else if (!(mEtOTPOne.getText().toString()+ mEtOTPTwo.getText().toString() + mEtOTPThree.getText().toString() +
+                mEtOTPFour.getText().toString()).equalsIgnoreCase(SessionManager.getString(Constants.KEY_OTP))) {
             Utilities.showAlertDialog(mContext, getString(R.string.hint_ok), "", getString(R.string.error_otp));
         } else {
-            performRequiredAction();
+            performRequiredActionVerification();
         }
     }
 
-    private void performRequiredAction() {
+    private void performRequiredActionVerification() {
         if (Utilities.isNetworkAvailable(mContext)) {
-            mLoginActivityPresenter.getVerification(SessionManager.getString(Constants.KEY_MOBILE_NO), mEtOTPOne.getText().toString() + mEtOTPTwo.getText().toString() + mEtOTPThree.getText().toString() + mEtOTPFour.getText().toString());
+            mLoginActivityPresenter.postVerificationOtp(SessionManager.getString(Constants.KEY_MOBILE_NO), SessionManager.getString(Constants.KEY_OTP));
         } else {
             Utilities.showAlertDialog(mContext, getString(R.string.hint_ok), "", getString(R.string.no_internet_message));
         }
@@ -208,12 +271,16 @@ public class OtpActivity extends AppCompatActivity implements View.OnClickListen
         countTimer = new CountDownTimer(minutesMills, 1000) {
             @SuppressLint("DefaultLocale")
             public void onTick(long millisUntilFinished) {
+                mTvDidNotGetOtp.setVisibility(View.GONE);
                 mTvTimer.setText(Utilities.strDisplayTimer(millisUntilFinished));
                 mBtnResendOtp.setText(getString(R.string.submit_otp));
             }
 
             public void onFinish() {
+                isResend = true;
                 mTvTimer.setVisibility(View.GONE);
+                mBtnResendOtp.setText(getString(R.string.resend_otp));
+                mTvDidNotGetOtp.setVisibility(View.VISIBLE);
             }
         };
         countTimer.cancel();
@@ -222,12 +289,18 @@ public class OtpActivity extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void getSendOtp(LoginBean loginBean) {
-
+        if (loginBean.getMessage().equalsIgnoreCase(Constants.KEY_SUCCESS)) {
+            if (loginBean.getData() != null && loginBean.getData().toString().length() > 0) {
+                SessionManager.setString(Constants.KEY_OTP, loginBean.getData().getOtp());
+                isResend = true;
+                displayTimer();
+            }
+        }
     }
 
     @Override
-    public void getVerificationOtp(CommonDataBean commonDataBean) {
-        if (commonDataBean.getStatus().equalsIgnoreCase(Constants.KEY_SUCCESS)) {
+    public void postVerificationOtp(CommonDataBean commonDataBean) {
+        if (commonDataBean.getMessage().equalsIgnoreCase(Constants.KEY_SUCCESS)) {
             if (commonDataBean.getData() != null && commonDataBean.getData().toString().length() > 0) {
                 SessionManager.setBoolean(Constants.KEY_IS_LOGGED_IN, true);
                 startActivity(new Intent(OtpActivity.this, HomeActivity.class));

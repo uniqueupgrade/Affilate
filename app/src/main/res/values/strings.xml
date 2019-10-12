@@ -17,6 +17,7 @@
     <string name="error_mobile_number">Please enter valid mobile number</string>
     <string name="error_mobile">Please enter 10 digit mobile number</string>
     <string name="error_terms">Please accept our Terms and Conditions to continue</string>
+    <string name="error_please_enter_the_otp">Please enter the OTP</string>
     <string name="error_otp">OTP is invalid</string>
     <string name="hint_ok">Ok</string>
     <string name="change_number">CHANGE NUMBER</string>
@@ -29,7 +30,7 @@
     <string name="short_list">Shorrt List</string>
     <string name="setting">Setting</string>
     <string name="something_wrong">Something went wrong, please try again</string>
-    <string name="submit_otp">Submit Otp</string>
+    <string name="submit_otp">Submit OTP</string>
     <string name="press_again">Please Press Again to exit</string>
     <string name="title_search">Search...</string>
     <string name="edit">Edit</string>
