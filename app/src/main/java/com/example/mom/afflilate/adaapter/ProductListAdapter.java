@@ -65,36 +65,3 @@ public class ProductListAdapter extends BaseAdapter {
         TextView tvProductName;
     }
 }
-   /* @NonNull
-    @Override
-    public ProductListAdapt er.MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = inflater.inflate(R.layout.item_product, viewGroup, false);
-        return new MyViewHolder(view);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull ProductListAdapter.MyViewHolder myViewHolder, final int position) {
-        if (mMyProductList != null && mMyProductList.toString().length() > 0 && mMyProductList.toString().length() < position) {
-            myViewHolder.mTvProductName.setText(mMyProductList[position]);
-            myViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                }
-            });
-        }
-    }
-
-    @Override
-    public int getItemCount() {
-        return mMyProductList.toString().length();
-    }
-
-    class MyViewHolder extends RecyclerView.ViewHolder {
-        TextView mTvProductName;
-
-        public MyViewHolder(View itemView) {
-            super(itemView);
-            mTvProductName = itemView.findViewById(R.id.tvProductName);
-        }
-    }
-}*/

@@ -25,6 +25,7 @@ public class Constants {
     //API
     public static String API_SEND_OTP = "sendotp.php?mobileNumber=";
     public static String API_VERIFICATION_OTP = "otpverification.php";
+    public static String API_GET_ALL_BRAND_MOBILES_AND_TABLETS = "uniqueupgrade.in/application/prccom/1ListProductByCategory.php";//Get the All Brand Mobiles and Tablets
 
     //Keys
     public static String KEY_SUCCESS = "Success";
@@ -60,6 +61,7 @@ public class Constants {
     public static String KEY_OTP = "otp";
     public static String KEY_IS_LOGGED_OUT = "isLoggedOut";
     public static String INTENT_KEY_COMEFROM = "comeFrom";
+    public static String INTENT_KEY_PRODUCT_NAME= "productName";
     public static String INTENT_KEY_URL = "url";
     public static String INTENT_KEY_TITLENAME = "titlename";
     public static String CHECK_MAINTAINANCE_STR = "Maintainance";

@@ -1,12 +1,14 @@
 package com.example.mom.afflilate.activities;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -17,6 +19,7 @@ import com.example.mom.afflilate.adaapter.BannerAdapter;
 import com.example.mom.afflilate.adaapter.ProductListAdapter;
 import com.example.mom.afflilate.listeners.TryAgainButtonClickListener;
 import com.example.mom.afflilate.model.BannerListBean;
+import com.example.mom.afflilate.utils.Constants;
 import com.example.mom.afflilate.utils.ProgressBarHandler;
 import com.example.mom.afflilate.utils.Utilities;
 
@@ -93,9 +96,15 @@ public class HomeActivity extends BaseActivity {
 
     public void attachProductListView() {
         try {
-            String[] myProductList = getResources().getStringArray(R.array.products);
+            final String[] myProductList = getResources().getStringArray(R.array.products);
             ProductListAdapter productListAdapter = new ProductListAdapter(this, myProductList, mItemIcon);
             mlvProductList.setAdapter(productListAdapter);
+            mlvProductList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                    redirectToProductPage(myProductList[position]);
+                }
+            });
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -118,5 +127,10 @@ public class HomeActivity extends BaseActivity {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void redirectToProductPage(String productName) {
+        startActivity(new Intent(mContext, ProductDetailsActivity.class)
+                .putExtra(Constants.INTENT_KEY_PRODUCT_NAME, productName));
     }
 }

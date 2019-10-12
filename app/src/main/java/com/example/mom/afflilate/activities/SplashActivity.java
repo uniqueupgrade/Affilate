@@ -55,7 +55,7 @@ public class SplashActivity extends AppCompatActivity {
                         Navigation.navigateToDashboard(mContext);
                         finishAffinity();
                     } else {
-                        startActivity(new Intent(SplashActivity.this, LoginActivity.class));
+                        startActivity(new Intent(SplashActivity.this, Login.class));
                         finish();
                     }
 

@@ -12,14 +12,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.mom.afflilate.R;
 import com.example.mom.afflilate.adaapter.MySearchItemArrayAdapter;
-import com.example.mom.afflilate.model.MySearchItem;
+import com.example.mom.afflilate.model.MySearchItemBean;
 import com.example.mom.afflilate.utils.Utilities;
 import com.facebook.shimmer.ShimmerFrameLayout;
 
@@ -33,8 +32,8 @@ public class SearchActivity extends BaseActivity implements SwipeRefreshLayout.O
     private View mNoDataView, mNoInternetView;
     private ListView lstSearchItem;
     private SearchView mSearchView;
-    private MySearchItem mySearchItem;
-    private ArrayList<MySearchItem> alMyContact;
+    private MySearchItemBean mySearchItemBean;
+    private ArrayList<MySearchItemBean> alMyContact;
     private MySearchItemArrayAdapter adpMySearchItem;
     private Context mContext;
     private ShimmerFrameLayout mShimmerFrameLayout;
@@ -96,133 +95,133 @@ public class SearchActivity extends BaseActivity implements SwipeRefreshLayout.O
     }
 
     public void getSearchIntoArrayList() {
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("Android Developer");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("Android Developer");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("IOS Developer");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("IOS Developer");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("PHP Developer");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("PHP Developer");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("Kotlin Developerr");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("Kotlin Developerr");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("Java Developer");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("Java Developer");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("Net Developer");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("Net Developer");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("PHP Developer");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("PHP Developer");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("Kotlin Developerr");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("Kotlin Developerr");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("Java Developer");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("Java Developer");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("Net Developer");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("Net Developer");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("PHP Developer");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("PHP Developer");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("Kotlin Developerr");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("Kotlin Developerr");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("Java Developer");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("Java Developer");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("Net Developer");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("Net Developer");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("Java Developer");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("Java Developer");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("Net Developer");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("Net Developer");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("PHP Developer");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("PHP Developer");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("Kotlin Developerr");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("Kotlin Developerr");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("Java Developer");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("Java Developer");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("Net Developer");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("Net Developer");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("Java Developer");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("Java Developer");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("Net Developer");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("Net Developer");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("PHP Developer");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("PHP Developer");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("Kotlin Developerr");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("Kotlin Developerr");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("Java Developer");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("Java Developer");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("Net Developer");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("Net Developer");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("Java Developer");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("Java Developer");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("Net Developer");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("Net Developer");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("PHP Developer");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("PHP Developer");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("Kotlin Developerr");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("Kotlin Developerr");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("Java Developer");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("Java Developer");
+        alMyContact.add(mySearchItemBean);
 
-        mySearchItem = new MySearchItem();
-        mySearchItem.setName("Net Developer");
-        alMyContact.add(mySearchItem);
+        mySearchItemBean = new MySearchItemBean();
+        mySearchItemBean.setName("Net Developer");
+        alMyContact.add(mySearchItemBean);
 
         mSwipeRefreshLayout.setRefreshing(false);
         mShimmerFrameLayout.stopShimmerAnimation();

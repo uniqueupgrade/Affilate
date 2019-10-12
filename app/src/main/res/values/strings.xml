@@ -46,4 +46,9 @@
     <string name="hint_yes">Yes</string>
     <string name="hint_no">No</string>
     <string name="no_data_found">No Result Found</string>
+    <string name="electronics">Electronics</string>
+    <string name="fashoin">Fashion</string>
+    <string name="home_and_furniture">Home and Furniture</string>
+    <string name="mobile_and_tablets">Mobiles and Tablets</string>
+    <string name="tv_and_appliances">TV and Appliances</string>
 </resources>

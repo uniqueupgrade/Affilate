@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.View;
 
 import com.example.mom.afflilate.R;
+import com.example.mom.afflilate.activities.ProductDetailsActivity;
 
 public class BackButtonClickListener implements View.OnClickListener {
 
@@ -26,5 +27,9 @@ public class BackButtonClickListener implements View.OnClickListener {
     }
 
     private void BackButtonClickEvent() {
+        if (mContext.getClass().getSimpleName().equalsIgnoreCase(ProductDetailsActivity.class.getSimpleName())) {
+            ProductDetailsActivity productDetailsActivity = (ProductDetailsActivity) mContext;
+            productDetailsActivity.finish();
+        }
     }
 }

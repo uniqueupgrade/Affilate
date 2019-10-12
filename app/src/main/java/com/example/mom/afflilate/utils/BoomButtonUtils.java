@@ -10,7 +10,7 @@ import com.aurelhubert.ahbottomnavigation.AHBottomNavigation;
 import com.aurelhubert.ahbottomnavigation.AHBottomNavigationItem;
 import com.example.mom.afflilate.R;
 import com.example.mom.afflilate.activities.HomeActivity;
-import com.example.mom.afflilate.activities.LoginActivity;
+import com.example.mom.afflilate.activities.Login;
 import com.example.mom.afflilate.activities.SearchActivity;
 import com.example.mom.afflilate.activities.SettingActivity;
 import com.example.mom.afflilate.activities.ShortListActivity;
@@ -66,7 +66,7 @@ public class BoomButtonUtils {
                                     ((Activity) mContext).finish();
                                 }
                             } else {
-                                mContext.startActivity(new Intent(mContext, LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                                mContext.startActivity(new Intent(mContext, Login.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                             }
                         }
                         break;
@@ -79,7 +79,7 @@ public class BoomButtonUtils {
                                     ((Activity) mContext).finish();
                                 }
                             } else {
-                                mContext.startActivity(new Intent(mContext, LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                                mContext.startActivity(new Intent(mContext, Login.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                             }
                         }
                         break;
@@ -92,7 +92,7 @@ public class BoomButtonUtils {
                                     ((Activity) mContext).finish();
                                 }
                             } else {
-                                mContext.startActivity(new Intent(mContext, LoginActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
+                                mContext.startActivity(new Intent(mContext, Login.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
                             }
                         }
                         break;

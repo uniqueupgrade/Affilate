@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string-array name="products">
-        <item>Electronics</item>
-        <item>Fashion</item>
-        <item>Home and Furniture</item>
-        <item>Mobiles and Tablets</item>
-        <item>TV and Appliances</item>
+        <item>@string/electronics</item>
+        <item>@string/fashoin</item>
+        <item>@string/home_and_furniture</item>
+        <item>@string/mobile_and_tablets</item>
+        <item>@string/tv_and_appliances</item>
     </string-array>
 
     <string-array name="nav_item_activity_titles">

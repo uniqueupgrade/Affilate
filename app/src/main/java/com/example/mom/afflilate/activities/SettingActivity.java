@@ -117,7 +117,7 @@ public class SettingActivity extends BaseActivity implements AdapterView.OnItemC
 
         Intent intent = new Intent(mContext, WebViewActivity.class);
         if (position == 0) {
-            Intent mIntent = new Intent(mContext, LoginActivity.class);
+            Intent mIntent = new Intent(mContext, Login.class);
             mIntent.putExtra("ComeFrom", "Home");
             startActivity(mIntent);
         } else if (position == 1) {

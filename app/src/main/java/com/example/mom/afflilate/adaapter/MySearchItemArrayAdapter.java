@@ -8,32 +8,32 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.example.mom.afflilate.R;
-import com.example.mom.afflilate.model.MySearchItem;
+import com.example.mom.afflilate.model.MySearchItemBean;
 
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class MySearchItemArrayAdapter extends ArrayAdapter<MySearchItem> {
+public class MySearchItemArrayAdapter extends ArrayAdapter<MySearchItemBean> {
 
     private static LayoutInflater inflater = null;
     private Context mContext;
-    private ArrayList<MySearchItem> mMySearchItemDataList; // header titles
-    private ArrayList<MySearchItem> mMySearchItemSearchDataList;
+    private ArrayList<MySearchItemBean> mMySearchItemBeanDataList; // header titles
+    private ArrayList<MySearchItemBean> mMySearchItemSearchDataListBean;
     private int resLayout;
 
-    public MySearchItemArrayAdapter(Context mContext, int resLay, ArrayList<MySearchItem> mMySearchItemDataList) {
+    public MySearchItemArrayAdapter(Context mContext, int resLay, ArrayList<MySearchItemBean> mMySearchItemBeanDataList) {
         super(mContext, resLay);
         this.mContext = mContext;
         this.resLayout = resLay;
-        this.mMySearchItemDataList = mMySearchItemDataList;
-        this.mMySearchItemSearchDataList = new ArrayList<>();
-        this.mMySearchItemSearchDataList.addAll(mMySearchItemDataList);
+        this.mMySearchItemBeanDataList = mMySearchItemBeanDataList;
+        this.mMySearchItemSearchDataListBean = new ArrayList<>();
+        this.mMySearchItemSearchDataListBean.addAll(mMySearchItemBeanDataList);
         inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     @Override
     public int getCount() {
-        return mMySearchItemDataList.size();
+        return mMySearchItemBeanDataList.size();
     }
 
     @Override
@@ -52,22 +52,22 @@ public class MySearchItemArrayAdapter extends ArrayAdapter<MySearchItem> {
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        MySearchItem mySearchItem = mMySearchItemDataList.get(position);
-        holder.mTvMySearchItem.setText(mySearchItem.name);
+        MySearchItemBean mySearchItemBean = mMySearchItemBeanDataList.get(position);
+        holder.mTvMySearchItem.setText(mySearchItemBean.name);
         return convertView;
     }
 
     public void filter(String charText) {
         charText = charText.toLowerCase(Locale.getDefault());
-        mMySearchItemDataList.clear();
+        mMySearchItemBeanDataList.clear();
         if (charText.length() == 0) {
-            mMySearchItemDataList.addAll(mMySearchItemSearchDataList);
+            mMySearchItemBeanDataList.addAll(mMySearchItemSearchDataListBean);
         } else {
-            for (MySearchItem mySearchItem : mMySearchItemSearchDataList) {
-                if (mySearchItem.name.toLowerCase(Locale.getDefault()).contains(charText)) {
-                    mMySearchItemDataList.add(mySearchItem);
-                } else if (mySearchItem.name.toLowerCase(Locale.getDefault()).contains(charText)) {
-                    mMySearchItemDataList.add(mySearchItem);
+            for (MySearchItemBean mySearchItemBean : mMySearchItemSearchDataListBean) {
+                if (mySearchItemBean.name.toLowerCase(Locale.getDefault()).contains(charText)) {
+                    mMySearchItemBeanDataList.add(mySearchItemBean);
+                } else if (mySearchItemBean.name.toLowerCase(Locale.getDefault()).contains(charText)) {
+                    mMySearchItemBeanDataList.add(mySearchItemBean);
                 }
             }
         }

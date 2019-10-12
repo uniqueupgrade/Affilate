@@ -5,7 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.example.mom.afflilate.activities.HomeActivity;
-import com.example.mom.afflilate.activities.LoginActivity;
+import com.example.mom.afflilate.activities.Login;
 
 public class Navigation {
 
@@ -18,7 +18,7 @@ public class Navigation {
     public static void navigateToLogin(Context context) {
         if (SessionManager.getBoolean(Constants.KEY_IS_LOGGED_IN)) {
             SessionManager.clearSession(context);
-            context.startActivity(new Intent(context, LoginActivity.class));
+            context.startActivity(new Intent(context, Login.class));
         }
     }
 }
