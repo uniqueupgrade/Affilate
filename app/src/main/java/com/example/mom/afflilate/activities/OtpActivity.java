@@ -292,7 +292,7 @@ public class OtpActivity extends AppCompatActivity implements View.OnClickListen
         if (loginBean.getMessage().equalsIgnoreCase(Constants.KEY_SUCCESS)) {
             if (loginBean.getData() != null && loginBean.getData().toString().length() > 0) {
                 SessionManager.setString(Constants.KEY_OTP, loginBean.getData().getOtp());
-                isResend = true;
+                isResend = false;
                 displayTimer();
             }
         }

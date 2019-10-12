@@ -3,15 +3,13 @@ package com.example.mom.afflilate.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
-
 public class CommonDataBean {
     @SerializedName("status")
     @Expose
     private String status;
     @SerializedName("data")
     @Expose
-    private List<Object> data = null;
+    private String data;
     @SerializedName("status_message")
     @Expose
     private String message;
@@ -24,11 +22,11 @@ public class CommonDataBean {
         this.status = status;
     }
 
-    public List<Object> getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(List<Object> data) {
+    public void setData(String data) {
         this.data = data;
     }
 

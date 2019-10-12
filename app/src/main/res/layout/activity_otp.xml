@@ -20,7 +20,6 @@
             android:layout_width="@dimen/dp240"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/dp10"
             android:gravity="center"
             android:lineSpacingMultiplier="1.2"
             android:textColor="@color/color_gray"
@@ -28,13 +27,15 @@
 
         <TextView
             android:id="@+id/tvChangeNumber"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/dp40"
             android:gravity="center"
+            android:layout_gravity="center"
             android:text="@string/change_number"
             android:textColor="@android:color/holo_orange_dark"
             android:textSize="@dimen/sp12"
+            android:padding="@dimen/sp15"
             android:textStyle="bold" />
 
         <TextView
@@ -42,7 +43,6 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/dp5"
             android:textColor="@color/colorPrimaryButton"
             android:textSize="@dimen/sp15"
             android:typeface="sans" />
@@ -172,7 +172,7 @@
         android:text="@string/didn_t_get_the_otp"
         android:textColor="@color/color_gray"
         android:textSize="@dimen/sp12"
-        android:visibility="visible" />
+        android:visibility="gone" />
 
     <Button
         android:id="@+id/btnResendOtp"
