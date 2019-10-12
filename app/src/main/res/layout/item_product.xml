@@ -31,7 +31,7 @@
                 android:layout_toRightOf="@+id/ivItem"
                 android:paddingLeft="@dimen/dp10"
                 android:textColor="@android:color/black"
-                android:textSize="@dimen/sp26"
+                android:textSize="@dimen/sp18"
                 android:textStyle="bold" />
         </RelativeLayout>
 

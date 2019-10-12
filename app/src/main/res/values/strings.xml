@@ -45,4 +45,5 @@
     <string name="logout_confirmation_message">Are you sure you want to logout?</string>
     <string name="hint_yes">Yes</string>
     <string name="hint_no">No</string>
+    <string name="no_data_found">No Result Found</string>
 </resources>

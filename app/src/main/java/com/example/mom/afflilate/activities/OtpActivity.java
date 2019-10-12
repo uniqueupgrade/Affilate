@@ -127,12 +127,6 @@ public class OtpActivity extends AppCompatActivity implements View.OnClickListen
         mBtnResendOtp = findViewById(R.id.btnResendOtp);
         mTvChangeNumber.setOnClickListener(this);
         mBtnResendOtp.setOnClickListener(this);
-        SmsReceiver.bindListener(new SmsListener() {
-            @Override
-            public void messageReceived(String messageText) {
-                mEtOTPOne.setText(messageText);
-            }
-        });
         mEtOTPOne.addTextChangedListener(new TextWatcher() {
             public void afterTextChanged(Editable s) {
                 if (s.length() == 1) {

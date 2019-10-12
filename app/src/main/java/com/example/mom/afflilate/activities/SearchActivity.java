@@ -3,6 +3,8 @@ package com.example.mom.afflilate.activities;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.view.ViewCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
@@ -18,18 +20,26 @@ import android.widget.TextView;
 import com.example.mom.afflilate.R;
 import com.example.mom.afflilate.adaapter.MySearchItemArrayAdapter;
 import com.example.mom.afflilate.model.MySearchItem;
+import com.example.mom.afflilate.utils.Utilities;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.util.ArrayList;
+import java.util.Locale;
 import java.util.Objects;
 
-public class SearchActivity extends BaseActivity {
+public class SearchActivity extends BaseActivity implements SwipeRefreshLayout.OnRefreshListener {
 
+    private ImageView mIvBack, mIvNoInternet;
+    private View mNoDataView, mNoInternetView;
     private ListView lstSearchItem;
     private SearchView mSearchView;
     private MySearchItem mySearchItem;
     private ArrayList<MySearchItem> alMyContact;
     private MySearchItemArrayAdapter adpMySearchItem;
     private Context mContext;
+    private ShimmerFrameLayout mShimmerFrameLayout;
+    private SwipeRefreshLayout mSwipeRefreshLayout;
+    private TextView mTitle;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,10 +51,8 @@ public class SearchActivity extends BaseActivity {
 
     private void setupToolbar() {
         try {
-            Toolbar toolbar = findViewById(R.id.toolbar_top);
-            TextView mTitle = toolbar.findViewById(R.id.toolbar_title);
-            ImageView ivBack = toolbar.findViewById(R.id.ivBack);
-            ivBack.setVisibility(View.GONE);
+            Toolbar toolbar = findViewById(R.id.toolbar);
+            mTitle = findViewById(R.id.tvTitle);
             setSupportActionBar(toolbar);
             mTitle.setText(getResources().getString(R.string.search));
             Objects.requireNonNull(getSupportActionBar()).setDisplayShowTitleEnabled(true);
@@ -75,6 +83,13 @@ public class SearchActivity extends BaseActivity {
     }
 
     private void initializeViews() {
+        mShimmerFrameLayout = findViewById(R.id.shimmer_view_container);
+        mSwipeRefreshLayout = findViewById(R.id.swipe_refresh_layout);
+        mShimmerFrameLayout.setVisibility(View.VISIBLE);
+        mNoDataView = findViewById(R.id.no_data);
+
+        mShimmerFrameLayout.startShimmerAnimation();
+        mSwipeRefreshLayout.setOnRefreshListener(this);
         lstSearchItem = findViewById(R.id.lstSearchItem);
         alMyContact = new ArrayList<>();
         getSearchIntoArrayList();
@@ -137,12 +152,86 @@ public class SearchActivity extends BaseActivity {
         mySearchItem.setName("Net Developer");
         alMyContact.add(mySearchItem);
 
+        mySearchItem = new MySearchItem();
+        mySearchItem.setName("Java Developer");
+        alMyContact.add(mySearchItem);
+
+        mySearchItem = new MySearchItem();
+        mySearchItem.setName("Net Developer");
+        alMyContact.add(mySearchItem);
+
+        mySearchItem = new MySearchItem();
+        mySearchItem.setName("PHP Developer");
+        alMyContact.add(mySearchItem);
+
+        mySearchItem = new MySearchItem();
+        mySearchItem.setName("Kotlin Developerr");
+        alMyContact.add(mySearchItem);
+
+        mySearchItem = new MySearchItem();
+        mySearchItem.setName("Java Developer");
+        alMyContact.add(mySearchItem);
+
+        mySearchItem = new MySearchItem();
+        mySearchItem.setName("Net Developer");
+        alMyContact.add(mySearchItem);
+
+        mySearchItem = new MySearchItem();
+        mySearchItem.setName("Java Developer");
+        alMyContact.add(mySearchItem);
+
+        mySearchItem = new MySearchItem();
+        mySearchItem.setName("Net Developer");
+        alMyContact.add(mySearchItem);
+
+        mySearchItem = new MySearchItem();
+        mySearchItem.setName("PHP Developer");
+        alMyContact.add(mySearchItem);
+
+        mySearchItem = new MySearchItem();
+        mySearchItem.setName("Kotlin Developerr");
+        alMyContact.add(mySearchItem);
+
+        mySearchItem = new MySearchItem();
+        mySearchItem.setName("Java Developer");
+        alMyContact.add(mySearchItem);
+
+        mySearchItem = new MySearchItem();
+        mySearchItem.setName("Net Developer");
+        alMyContact.add(mySearchItem);
+
+        mySearchItem = new MySearchItem();
+        mySearchItem.setName("Java Developer");
+        alMyContact.add(mySearchItem);
+
+        mySearchItem = new MySearchItem();
+        mySearchItem.setName("Net Developer");
+        alMyContact.add(mySearchItem);
+
+        mySearchItem = new MySearchItem();
+        mySearchItem.setName("PHP Developer");
+        alMyContact.add(mySearchItem);
+
+        mySearchItem = new MySearchItem();
+        mySearchItem.setName("Kotlin Developerr");
+        alMyContact.add(mySearchItem);
+
+        mySearchItem = new MySearchItem();
+        mySearchItem.setName("Java Developer");
+        alMyContact.add(mySearchItem);
+
+        mySearchItem = new MySearchItem();
+        mySearchItem.setName("Net Developer");
+        alMyContact.add(mySearchItem);
+
+        mSwipeRefreshLayout.setRefreshing(false);
+        mShimmerFrameLayout.stopShimmerAnimation();
+        mShimmerFrameLayout.setVisibility(View.GONE);
         adpMySearchItem = new MySearchItemArrayAdapter(SearchActivity.this, R.layout.search_list_item, alMyContact);
         lstSearchItem.setAdapter(adpMySearchItem);
         lstSearchItem.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView parent, View view, int position, long id) {
-
                 adpMySearchItem.notifyDataSetChanged();
             }
         });
@@ -153,23 +242,42 @@ public class SearchActivity extends BaseActivity {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         MenuItem myActionMenuItem = menu.findItem(R.id.action_search);
         mSearchView = (SearchView) myActionMenuItem.getActionView();
-        EditText searchEditText = mSearchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
-        searchEditText.setTextColor(getResources().getColor(android.R.color.black));
-        searchEditText.setHintTextColor(getResources().getColor(R.color.color_gray));
-        mSearchView.setQueryHint(getString(R.string.title_search));
+        mSearchView.setQueryHint(getResources().getString(R.string.title_search));
 
         ImageView iconSearch = mSearchView.findViewById(android.support.v7.appcompat.R.id.search_button);
         iconSearch.setColorFilter(getResources().getColor(android.R.color.black));
         ImageView iconClose = mSearchView.findViewById(android.support.v7.appcompat.R.id.search_close_btn);
         iconClose.setColorFilter(getResources().getColor(android.R.color.black));
-        TextView textView = mSearchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
+        TextView textView =  mSearchView.findViewById(android.support.v7.appcompat.R.id.search_src_text);
         textView.setTextColor(getResources().getColor(android.R.color.black));
-        textView.setHintTextColor(getResources().getColor(R.color.color_gray));
+        textView.setHintTextColor(getResources().getColor(android.R.color.darker_gray));
+
+        if (TextUtils.getLayoutDirectionFromLocale(Locale.getDefault()) == ViewCompat.LAYOUT_DIRECTION_RTL) {
+            SearchView.SearchAutoComplete searchAutoComplete = mSearchView.findViewById(R.id.search_src_text);
+            searchAutoComplete.setTextAlignment(View.TEXT_ALIGNMENT_VIEW_START);
+        }
+        mSearchView.setMaxWidth(Integer.MAX_VALUE);
+
+        mSearchView.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mTitle.setVisibility(View.INVISIBLE);
+            }
+        });
+
+        mSearchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                Utilities.hideKeyboard(SearchActivity.this);
+                mTitle.setVisibility(View.VISIBLE);
+                return false;
+            }
+        });
 
         mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                //Hide Keyboard
+                Utilities.hideKeyboard(SearchActivity.this);
                 return true;
             }
 
@@ -202,5 +310,11 @@ public class SearchActivity extends BaseActivity {
                 adpMySearchItem.filter(newText);
             }
         }
+    }
+
+    @Override
+    public void onRefresh() {
+        mSwipeRefreshLayout.setRefreshing(true);
+        getSearchIntoArrayList();
     }
 }
